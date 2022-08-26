@@ -2,7 +2,8 @@
 {
   public static long PrimeAtNumber(int number)
   {
-    var list = new List<long>();
+    long res = 0;
+    int counter = 0;
     for (long i = 1; i <= long.MaxValue; i++)
     {
       for (long j = i; j >= 1; j--)
@@ -12,12 +13,15 @@
           break;
         }
         if (j == 1)
-          list.Add(i);
+        {
+          res = i;
+          counter++;
+        }
       }
-      if (list.Count == number + 1)
+      if (counter == number + 1)
         break;
     }
-    return list.Last();
+    return res;
   }
   public static List<int> UniqueMultipliers(int value)
   {
