@@ -2,14 +2,26 @@
 {
   public static void Main()
   {
-    Console.WriteLine(GetLongest(new[] { "azaz", "as", "sdsd" }));
-    Console.WriteLine(GetLongest(new[] { "zzzz", "as", "sdsd" }));
-    Console.WriteLine(GetLongest(new[] { "as", "12345", "as", "sds" }));
+    var list = new List<int>();
+    for (int i = 0; i < 10; i++)
+    {
+      for (int j = 1; j <= 10; j++)
+      {
+        if (i % j != 0)
+          break;
+        if (j == 10)
+        {
+          list.Add(i);
+          return;
+        }
+      }
+      if (list.Count > 0)
+      {
+        break;
+      }
+    }
+    Console.WriteLine(list[0]);
+    Console.ReadLine();
   }
 
-  private static string GetLongest(string[] arr)
-  {
-    var res = arr.OrderByDescending(x => x.Length).ToArray();
-    return res[0];
-  }
 }
