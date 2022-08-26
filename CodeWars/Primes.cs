@@ -1,5 +1,9 @@
 ﻿public static class Primes
 {
+  public static long SumOfPrimes(int number)
+  {
+    return GetPrimes(number).Sum();
+  }
   public static long PrimeAtNumber(int number)
   {
     long res = 0;
@@ -65,17 +69,23 @@
   public static List<int> GetPrimes(int value)
   {
     var list = new List<int>();
-    for (int i = 1; i <= value; i++)
+    list.Add(2);
+    for (int i = 3; i <= value; i++)
     {
-      for (int j = i; j >= 1; j--)
+      int newItem = 0;
+      for (int j = 0; j <= list.Count - 1; j++)
       {
-        if (i % j == 0 && j != 1 && i != j)
+        if (i % list[j] == 0)
         {
           break;
         }
-        if (j == 1)
-          list.Add(i);
+        else if (j == list.Count - 1)
+        {
+          newItem = i;
+        }
       }
+      if (newItem != 0)
+        list.Add(i);
     }
     return list;
   }
