@@ -1,5 +1,24 @@
 ﻿public static class Primes
 {
+  public static long PrimeAtNumber(int number)
+  {
+    var list = new List<long>();
+    for (long i = 1; i <= long.MaxValue; i++)
+    {
+      for (long j = i; j >= 1; j--)
+      {
+        if (i % j == 0 && j != 1 && i != j)
+        {
+          break;
+        }
+        if (j == 1)
+          list.Add(i);
+      }
+      if (list.Count == number + 1)
+        break;
+    }
+    return list.Last();
+  }
   public static List<int> UniqueMultipliers(int value)
   {
     List<int> list = new List<int>();
